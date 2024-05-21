@@ -23,24 +23,30 @@ import "./models/Quote.js";
 import "./models/Blog.js";
 import resolvers from "./resolver.js";
 
-const app = express();
+const startServer = async () => {
+    const app = express();
 
-const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    context: ({ req }) => {
-        const { authorization } = req.headers;
-        if (authorization) {
-            const { userId } = jwt.verify(authorization, process.env.JWT_SECRET);
-            return { userId };
-        }
-    },
-    plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
-});
+    const server = new ApolloServer({
+        typeDefs,
+        resolvers,
+        context: ({ req }) => {
+            const { authorization } = req.headers;
+            if (authorization) {
+                const { userId } = jwt.verify(authorization, process.env.JWT_SECRET);
+                return { userId };
+            }
+        },
+        plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
+    });
 
-await server.start();
-server.applyMiddleware({ app, path: '/' });
+    await server.start();
+    server.applyMiddleware({ app, path: '/' });
 
-app.listen({ port }, () => {
-    console.log(`Server ready at http://localhost:4000`);
+    app.listen({ port }, () => {
+        console.log(`Server ready at http://localhost:${port}`);
+    });
+};
+
+startServer().catch(err => {
+    console.error("Failed to start server", err);
 });
