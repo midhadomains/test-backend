@@ -6,6 +6,8 @@ import mongoose from "mongoose";
 import 'dotenv/config';
 import jwt from "jsonwebtoken";
 
+const port = parseInt(process.env.PORT) || 4000;
+
 mongoose.connect(process.env.MONGO_URI);
 
 mongoose.connection.on("connected", () => {
@@ -37,8 +39,8 @@ const server = new ApolloServer({
 });
 
 await server.start();
-server.applyMiddleware({ app, path: '/graphql' });
+server.applyMiddleware({ app, path: '/' });
 
-app.listen({ port: 4000 }, () => {
-    console.log(`Server ready at http://localhost:4000/graphql`);
+app.listen({ port }, () => {
+    console.log(`Server ready at http://localhost:4000`);
 });

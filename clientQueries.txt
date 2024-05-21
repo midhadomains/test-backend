@@ -90,3 +90,30 @@ mutation SigninUser($userSignin:UserSigninInput!){
     token
   }
 }
+
+query getAllBlogs {
+    blogs(first: 3 , after:“6646f29de4d1d11d1333033c”, category:“frm-part-2") {
+        edges {
+            cursor
+            node {
+                _id
+                title
+                author
+                meta_data
+                meta_description
+                keywords
+                category
+                sub_category
+                slug
+                open_graph_tags
+                chapters {
+                     title
+                     data
+                }
+            }
+        }
+        pageInfo {
+            hasNextPage
+        }
+    }
+}
