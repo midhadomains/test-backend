@@ -9,6 +9,7 @@ const typeDefs = gql`
     iquote(by:ID!):[Quote]
     blogs(first: Int!, after: String , category: String): BlogConnection!
     searchBlogs(keyword: String!): [Blog!]!
+    searchBlogById(_id:String!):Blog!
  }
 
  type BlogConnection {

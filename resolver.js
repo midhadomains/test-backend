@@ -5,6 +5,7 @@ import 'dotenv/config'
 const User = mongoose.model("User")
 const Quote = mongoose.model("Quote")
 const Blog = mongoose.model("Blog")
+import jwt from "jsonwebtoken";
 
 
 const resolvers = {
@@ -43,6 +44,9 @@ const resolvers = {
         searchBlogs: async (_, { keyword }) => {
             return await Blog.find({ title: { $regex: keyword, $options: "i" } });
         },
+        searchBlogById: async (_,{_id}) => {
+            return await Blog.findOne({ _id:_id});
+        }
     },
  
     User: {
