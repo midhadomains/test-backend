@@ -21,6 +21,7 @@ mongoose.connection.on("error", (err) => {
 import "./models/User.js";
 import "./models/Quote.js";
 import "./models/Blog.js";
+
 import resolvers from "./resolver.js";
 
 const startServer = async () => {

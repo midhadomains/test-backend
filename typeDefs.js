@@ -8,6 +8,7 @@ const typeDefs = gql`
     quotes:[QuoteWithName!]
     iquote(by:ID!):[Quote]
     blogs(first: Int!, after: String , category: String): BlogConnection!
+    searchBlogs(keyword: String!): [Blog!]!
  }
 
  type BlogConnection {
@@ -36,10 +37,12 @@ const typeDefs = gql`
    sub_category: String!
    slug: String!
    open_graph_tags: [String]!
+   data:String
    chapters:[Chapter!]
  }
 
  type Chapter {
+   _id:ID!
    title: String!
    data: String!
  }
