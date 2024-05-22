@@ -21,6 +21,7 @@ const typeDefs = gql`
  }
 
  type PageInfo {
+   endCursor:String!
    hasNextPage: Boolean!
  }
 

@@ -28,13 +28,15 @@ const resolvers = {
                 cursor: blog._id, // Assuming _id is the unique identifier for blogs
                 node: blog,
             }));
-
+            
+            const endCursor = blogs[blogs.length-1]._id;
             const hasNextPage = blogs.length === first;
-
+          
             return {
                 edges,
                 pageInfo: {
-                    hasNextPage,
+                    endCursor,
+                    hasNextPage
                 },
             };
         },
