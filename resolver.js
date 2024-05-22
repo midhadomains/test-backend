@@ -40,6 +40,9 @@ const resolvers = {
                 },
             };
         },
+        searchBlogs: async (_, { keyword }) => {
+            return await Blog.find({ title: { $regex: keyword, $options: "i" } });
+        },
     },
  
     User: {
