@@ -39,6 +39,8 @@ const typeDefs = gql`
    slug: String!
    open_graph_tags: [String]!
    data:String
+   date_created:String!
+   image:String
    chapters:[Chapter!]
  }
 
@@ -110,6 +112,8 @@ const typeDefs = gql`
    date_created:String!
    slug:String!
    chapters:[ChapterInput]
+   data:String!
+   image:String!
  }
 
 input ChapterInput{
