@@ -11,6 +11,8 @@ const blogSchema = new mongoose.Schema({
     sub_category:{type:String, required:true},
     date_created:{type:String, required:true },
     slug:{type:String, required:true},
+    data:{type:String, required:true},
+    image:{type:String, required:true},
     chapters:{type:[{title:String,data:String}], required:false}
 },{
     versionKey:false

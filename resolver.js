@@ -92,7 +92,6 @@ const resolvers = {
             if (!userId) throw new Error("You must be logged in")
             const newBlog = new Blog({
                 ...abc
-
             })
             await newBlog.save();
             return "Blog created Successfully"
