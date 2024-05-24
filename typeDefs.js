@@ -10,6 +10,8 @@ const typeDefs = gql`
     blogs(first: Int!, after: String , category: String): BlogConnection!
     searchBlogs(keyword: String!): [Blog!]!
     searchBlogById(_id:String!):Blog!
+    searchBlogBySlug(slug:String!):Blog!
+
  }
 
  type BlogConnection {

@@ -44,8 +44,13 @@ const resolvers = {
         searchBlogs: async (_, { keyword }) => {
             return await Blog.find({ title: { $regex: keyword, $options: "i" } });
         },
-        searchBlogById: async (_,{_id}) => {
-            return await Blog.findOne({ _id:_id});
+        searchBlogById: async (_,{_id,slug}) => {
+            // console.log(slug)
+            return await Blog.findOne({ _id: _id, slug: slug });
+        },
+        searchBlogBySlug: async (_, { slug }) => {
+            // console.log(slug)
+            return await Blog.findOne({ slug: slug });
         }
     },
  
