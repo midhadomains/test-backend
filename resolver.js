@@ -22,7 +22,8 @@ const resolvers = {
             if (category) {
                 query.category = category;
             }
-            const blogs = await Blog.find(query).limit(first + 1); // Fetch one more than requested
+            //const blogs = await Blog.find(query).limit(first + 1); // Fetch one more than requested
+            const blogs = await Blog.find(query).sort({ createdAt: -1 }).limit(first + 1); // Fetch one more than requested, sorted by createdAt
 
             const hasNextPage = blogs.length > first;
             const edges = hasNextPage ? blogs.slice(0, -1) : blogs; // If there's a next page, exclude the extra document
