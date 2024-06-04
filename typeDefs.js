@@ -33,17 +33,14 @@ const typeDefs = gql`
    _id: ID!
    title: String!
    author: String!
-   meta_data: String!
+   reviewer:String!
    meta_description: String!
    keywords: [String!]!
    category: String!
    sub_category: String!
    slug: String!
-   open_graph_tags: [String]!
    data:String
-   date_created:String!
    image:String
-   chapters:[Chapter!]
  }
 
  type Chapter {
@@ -105,22 +102,16 @@ const typeDefs = gql`
  input BlogInput{
    title:String!
    author:String!
-   meta_data:String!
+   reviewer:String!
    meta_description:String!
    keywords:[String]!
-   open_graph_tags:[String]!
    category:String!
    sub_category:String!
-   date_created:String!
    slug:String!
-   chapters:[ChapterInput]
    data:String!
    image:String!
  }
 
-input ChapterInput{
-   title:String!
-   data:String!
- }
+
 `
 export default typeDefs;
