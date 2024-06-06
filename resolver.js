@@ -33,7 +33,10 @@ const resolvers = {
             return {
                 edges: edges.map(blog => ({
                     cursor: blog._id, // Assuming _id is the unique identifier for blogs
-                    node: blog,
+                    node:{
+                        ...blog.toObject(),
+                        createdAt: blog.createdAt.toISOString(),
+                    }
                 })),
                 pageInfo: {
                     endCursor,

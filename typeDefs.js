@@ -39,6 +39,7 @@ const typeDefs = gql`
    category: String!
    sub_category: String!
    slug: String!
+   createdAt:String!
    data:String
    image:String
  }
