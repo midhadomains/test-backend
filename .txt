@@ -1,0 +1,14 @@
+{
+  "blogNew": {
+    "author": "dkkk",
+    "category": "frm",
+    "data": "kdjf",
+    "image": "abc.com",
+    "keywords": ["agjk","dddd"],
+    "meta_description": "abc  jlkj",
+    "reviewer": "abc",
+    "slug": "abc-def",
+    "sub_category": "bcd",
+    "title": "abc"
+  }
+}

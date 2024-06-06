@@ -33,11 +33,11 @@ const typeDefs = gql`
    _id: ID!
    title: String!
    author: String!
-   reviewer:String!
+   reviewer:String
    meta_description: String!
    keywords: [String!]!
    category: String!
-   sub_category: String!
+   sub_category: String
    slug: String!
    data:String
    image:String
