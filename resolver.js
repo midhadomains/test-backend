@@ -36,6 +36,7 @@ const resolvers = {
                     node:{
                         ...blog.toObject(),
                         createdAt: blog.createdAt.toISOString(),
+                        updatedAt: blog.updatedAt.toISOString()
                     }
                 })),
                 pageInfo: {
@@ -45,13 +46,31 @@ const resolvers = {
             };
         },
         searchBlogs: async (_, { keyword }) => {
-            return await Blog.find({ title: { $regex: keyword, $options: "i" } });
-        },
+            const blogs = await Blog.find({ title: { $regex: keyword, $options: "i" } });
+            return blogs.map(blog => ({
+                ...blog.toObject(),
+                createdAt: blog.createdAt.toISOString(),
+                updatedAt: blog.updatedAt.toISOString()
+            }));        },
         searchBlogById: async (_, { _id, slug }) => {
-            return await Blog.findOne({ _id, slug });
+            const blog = await Blog.findOne({ _id, slug });
+            if (!blog) throw new Error("Blog not found");
+            return {
+                ...blog.toObject(),
+                createdAt: blog.createdAt.toISOString(),
+                updatedAt: blog.updatedAt.toISOString()
+            };
         },
         searchBlogBySlug: async (_, { slug }) => {
-            return await Blog.findOne({ slug });
+            const blog = await Blog.findOne({ slug });
+            if (!blog) {
+                throw new Error("Blog not found");
+            }
+            return {
+                ...blog.toObject(),
+                createdAt: blog.createdAt.toISOString(),
+                updatedAt: blog.updatedAt.toISOString()
+            };
         }
     },
     User: {
